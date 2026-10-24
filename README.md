@@ -2,6 +2,29 @@
 # CardioLens AI
 ### AI-Powered Heart Health Assessment
 
+
+<p align="center">
+  <a href="https://cardiolens-ai-0s5w.onrender.com/">
+    <img src="https://img.shields.io/badge/Live%20Demo-Open%20CardioLens%20AI-7C0E44?style=for-the-badge&logo=render&logoColor=white" alt="Open CardioLens AI live demo" />
+  </a>
+  <a href="https://github.com/javieresoares/cardiolens-ai">
+    <img src="https://img.shields.io/badge/GitHub-Source%20Code-24292e?style=for-the-badge&logo=github&logoColor=white" alt="View source code on GitHub" />
+  </a>
+</p>
+
+## Live Demo
+
+**Try CardioLens AI:** [https://cardiolens-ai-0s5w.onrender.com/](https://cardiolens-ai-0s5w.onrender.com/)
+
+> The free Render instance may take a little time to wake up after a period of inactivity.
+
+## Application Preview
+
+<p align="center">
+  <img src="docs/images/cardiolens-homepage.png" alt="CardioLens AI homepage showing the AI-powered heart health assessment interface" width="100%" />
+</p>
+
+
 CardioLens AI is an educational machine learning web application that demonstrates how cardiovascular health indicators can be used to generate heart disease prediction results using a K-Nearest Neighbors (KNN) classifier.
 
 The project combines data exploration and model experimentation in Google Colab with a Flask-based web application, creating an end-to-end machine learning portfolio project.
@@ -309,11 +332,11 @@ Categorical values must follow the encoding scheme used during training. The Fla
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/heart-disease.git
-cd heart-disease
+git clone https://github.com/javieresoares/cardiolens-ai.git
+cd cardiolens-ai
 ```
 
-Replace `YOUR-USERNAME` with the actual GitHub username.
+The repository URL above points to the CardioLens AI project.
 
 ### 2. Create a Virtual Environment
 
@@ -360,6 +383,11 @@ This address is accessible from the computer running the application. A public d
 ## Deployment
 
 CardioLens AI is designed to be deployable as a Python web service on Render.
+
+
+The current public deployment is available at:
+[https://cardiolens-ai-0s5w.onrender.com/](https://cardiolens-ai-0s5w.onrender.com/)
+
 
 ### General Deployment Workflow
 
