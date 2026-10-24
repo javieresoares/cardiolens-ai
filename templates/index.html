@@ -1,0 +1,1478 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- =========================================
+       1. ESSENTIAL META
+  ========================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C0E44" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- =========================================
+       2. PRIMARY SEO
+  ========================================== -->
+  <title>CardioLens AI | AI-Powered Heart Health Assessment</title>
+
+  <meta name="description"
+    content="Explore CardioLens AI, an educational machine learning project that demonstrates heart disease prediction using cardiovascular health indicators and a KNN classifier." />
+
+  <meta name="author" content="CardioLens AI" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- =========================================
+       3. CANONICAL URL
+       Add the real URL after Render deployment.
+  ========================================== -->
+  <!--
+  <link
+    rel="canonical"
+    href="https://YOUR-RENDER-URL.onrender.com/"
+  />
+  -->
+
+  <!-- =========================================
+       4. OPEN GRAPH
+       WhatsApp, LinkedIn, Facebook, etc.
+  ========================================== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CardioLens AI" />
+  <meta property="og:title" content="CardioLens AI | AI-Powered Heart Health Assessment" />
+  <meta property="og:description"
+    content="Discover how machine learning analyzes cardiovascular health indicators through an interactive heart health prediction demo." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Enable these after deployment -->
+  <!--
+  <meta
+    property="og:url"
+    content="https://YOUR-RENDER-URL.onrender.com/"
+  />
+  <meta
+    property="og:image"
+    content="https://YOUR-RENDER-URL.onrender.com/static/images/cardiolens-social-preview.png"
+  />
+  <meta
+    property="og:image:alt"
+    content="CardioLens AI — AI-powered heart health assessment"
+  />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  -->
+
+  <!-- =========================================
+       5. TWITTER / X CARD
+  ========================================== -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CardioLens AI | AI-Powered Heart Health Assessment" />
+  <meta name="twitter:description"
+    content="An educational machine learning project demonstrating cardiovascular health analysis using a KNN classifier." />
+
+  <!-- Enable after deployment -->
+  <!--
+  <meta
+    name="twitter:image"
+    content="https://YOUR-RENDER-URL.onrender.com/static/images/cardiolens-social-preview.png"
+  />
+  <meta
+    name="twitter:image:alt"
+    content="CardioLens AI heart health assessment platform"
+  />
+  -->
+
+
+  <!-- =========================================
+       6. FAVICON
+  ========================================== -->
+
+  <!-- Standard favicon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}" />
+
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+
+  <!-- Apple devices -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}" />
+
+  <!-- Android devices -->
+  <link rel="icon" type="image/png" sizes="192x192"
+    href="{{ url_for('static', filename='images/android-chrome-192x192.png') }}" />
+
+  <link rel="icon" type="image/png" sizes="512x512"
+    href="{{ url_for('static', filename='images/android-chrome-512x512.png') }}" />
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="{{ url_for('static', filename='images/site.webmanifest') }}" />
+
+
+  <!-- =========================================
+       7. RESOURCE OPTIMIZATION
+  ========================================== -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+
+<body>
+
+  <!-- =========================
+     CARDIOLENS AI HEADER
+========================= -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+
+      <!-- Logo -->
+      <a class="brand-logo" href="#home" aria-label="CardioLens AI - Home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M20 33S5 24.5 5 14.5C5 9.8 8.4 6.5 12.5 6.5
+            C15.8 6.5 18.1 8.5 20 11
+            C21.9 8.5 24.2 6.5 27.5 6.5
+            C31.6 6.5 35 9.8 35 14.5C35 24.5 20 33 20 33Z" stroke="currentColor" stroke-width="2"
+              stroke-linejoin="round" />
+            <path d="M8 20H14L17.5 14L22 25L25.5 19H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+
+        <span class="brand-wordmark">
+          CardioLens <span>AI</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
+
+        <a class="nav-link active" href="#home" data-nav="home" aria-current="page">
+          Home
+        </a>
+
+        <a class="nav-link" href="#about" data-nav="about">
+          About
+        </a>
+
+        <a class="nav-link" href="#technology" data-nav="technology">
+          Technology
+        </a>
+
+        <a class="nav-link" href="#features" data-nav="features">
+          Features
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a class="header-cta" href="#try-it">
+          Try Demo
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobile-menu-button" type="button" aria-label="Open navigation menu"
+          aria-expanded="false" aria-controls="main-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+  <!-- End CardioLens AI Header -->
+
+  <!-- =========================
+     CARDIOLENS AI — HERO
+========================= -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+
+      <!-- Left: Hero Content -->
+      <div class="hero-content scroll-reveal">
+
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          AI-POWERED HEART HEALTH ANALYTICS
+        </div>
+
+        <h1 class="hero-title">
+          Understand Your
+          <span class="hero-title-highlight">Heart Health</span>
+          Through AI
+        </h1>
+
+        <p class="hero-description">
+          Explore how machine learning analyzes cardiovascular health
+          indicators to generate heart disease predictions through an
+          interactive, data-driven experience.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#try-it" class="hero-button-primary">
+            Try Demo
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <a href="#technology" class="hero-button-secondary">
+            Explore Technology
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+            <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <span>Educational machine learning project, not a medical diagnosis.</span>
+        </div>
+      </div>
+
+      <!-- Right: Heart Visual -->
+      <div class="hero-visual scroll-reveal reveal-scale">
+
+        <div class="hero-visual-panel">
+
+          <div class="hero-visual-top">
+            <div>
+              <span class="visual-overline">CARDIOVASCULAR AI</span>
+              <h2>Heart Health Insights</h2>
+            </div>
+            <span class="visual-status">
+              <span></span>
+              AI MODEL
+            </span>
+          </div>
+
+          <!-- Decorative heart illustration -->
+          <div class="hero-heart-stage">
+
+            <div class="heart-orbit heart-orbit-outer"></div>
+            <div class="heart-orbit heart-orbit-inner"></div>
+
+            <div class="heart-center-glow"></div>
+
+            <svg class="hero-heart-svg" viewBox="0 0 280 250" fill="none" role="img"
+              aria-label="Stylized heart illustration with an ECG waveform">
+
+              <defs>
+                <linearGradient id="heartGradient" x1="54" y1="35" x2="218" y2="218" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#D49A9A" />
+                  <stop offset="48%" stop-color="#AA5E7A" />
+                  <stop offset="100%" stop-color="#7C0E44" />
+                </linearGradient>
+
+                <linearGradient id="heartHighlight" x1="75" y1="45" x2="150" y2="180" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#F9EFEC" />
+                  <stop offset="100%" stop-color="#D49A9A" />
+                </linearGradient>
+              </defs>
+
+              <!-- Heart shape -->
+              <path d="M140 208
+                 C125 194 48 143 43 96
+                 C39 60 62 39 91 42
+                 C113 43 130 58 140 74
+                 C151 55 171 42 193 44
+                 C224 46 242 70 235 101
+                 C226 142 163 192 140 208Z" fill="url(#heartGradient)" stroke="#7C0E44" stroke-width="1.5"
+                stroke-linejoin="round" />
+
+              <!-- Soft highlight -->
+              <path d="M91 54
+                 C69 54 55 72 59 95
+                 C63 116 81 135 100 151
+                 C84 126 78 106 80 86
+                 C82 70 91 61 107 59Z" fill="url(#heartHighlight)" opacity="0.65" />
+
+              <!-- Simplified vessel details -->
+              <path d="M116 48
+                 C113 29 121 20 137 20
+                 C149 20 155 30 153 43
+                 L150 61" stroke="#7C0E44" stroke-width="11" stroke-linecap="round" />
+
+              <path d="M171 49
+                 C171 28 183 22 196 29
+                 C207 35 205 48 199 60
+                 L188 77" stroke="#AA5E7A" stroke-width="9" stroke-linecap="round" />
+
+              <!-- ECG waveform -->
+              <path d="M21 127H80L96 127L109 105L126 153L144 91L162 127H191L204 114L216 127H258" stroke="#FFFBF9"
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="hero-ecg-line" />
+
+              <path d="M21 127H80L96 127L109 105L126 153L144 91L162 127H191L204 114L216 127H258" stroke="#7C0E44"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7" />
+            </svg>
+
+            <span class="heart-decoration heart-decoration-one"></span>
+            <span class="heart-decoration heart-decoration-two"></span>
+            <span class="heart-decoration heart-decoration-three"></span>
+          </div>
+
+          <!-- Bottom information -->
+          <div class="hero-visual-footer">
+            <div class="visual-metric">
+              <span class="visual-metric-icon">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M3 10h4l2-4 3 8 2-4h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <div>
+                <span class="visual-metric-label">Input features</span>
+                <strong>13 Indicators</strong>
+              </div>
+            </div>
+
+            <div class="visual-divider"></div>
+
+            <div class="visual-metric">
+              <span class="visual-metric-icon">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </span>
+              <div>
+                <span class="visual-metric-label">Prediction model</span>
+                <strong>KNN Classifier</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="hero-floating-label">
+          <span class="floating-label-icon">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 17s-6.5-4-6.5-9A3.5 3.5 0 0 1 10 6
+              a3.5 3.5 0 0 1 6.5 2c0 5-6.5 9-6.5 9Z" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </span>
+          <span>Health data, meaningful insights.</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+
+
+  <!-- CardioLens AI — Project Highlights -->
+  <section class="project-highlights" aria-label="Project highlights">
+    <div class="highlights-container">
+
+      <article class="highlight-item scroll-reveal">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 21s-8-4.8-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.2-8 11-8 11Z"
+              stroke-linejoin="round" />
+            <path d="M5.5 12h4l2-3.5 2.2 6 1.5-2.5h3.3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="highlight-copy">
+          <h3>13 Health Indicators</h3>
+          <p>Structured cardiovascular input features</p>
+        </div>
+      </article>
+
+      <article class="highlight-item scroll-reveal" data-delay="1">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3.5" y="4" width="17" height="16" rx="3" />
+            <path d="M7 12h2.5l1.8-3 2.5 6 1.6-3H17" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="highlight-copy">
+          <h3>KNN Classifier</h3>
+          <p>Machine learning prediction model</p>
+        </div>
+      </article>
+
+      <article class="highlight-item scroll-reveal" data-delay="2">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="6" cy="6" r="2.2" />
+            <circle cx="18" cy="6" r="2.2" />
+            <circle cx="12" cy="18" r="2.2" />
+            <path d="M8 7.2 10.8 16M16 7.2 13.2 16M8.5 6h7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="highlight-copy">
+          <h3>Integrated Pipeline</h3>
+          <p>Preprocessing connected to model inference</p>
+        </div>
+      </article>
+
+      <article class="highlight-item scroll-reveal" data-delay="3">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M4 19V5M4 19h16" />
+            <path d="m7 15 4-4 3 2 5-6" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="19" cy="7" r="1.2" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+        <div class="highlight-copy">
+          <h3>Prediction Insights</h3>
+          <p>Explore model output interactively</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+  <!-- End Project Highlights -->
+
+
+  <!-- =========================
+     CARDIOLENS AI — ABOUT
+========================= -->
+
+  <section class="about-section" id="about">
+
+    <!-- About Project -->
+    <div class="about-container">
+
+      <div class="about-intro about-reveal">
+        <span class="about-eyebrow">ABOUT THE PROJECT</span>
+
+        <h2 class="about-title">
+          Turning Health Data into
+          <span>Meaningful Predictions</span>
+        </h2>
+
+        <p class="about-description">
+          CardioLens AI explores how machine learning can analyze
+          cardiovascular health indicators and provide an interactive
+          heart disease prediction experience.
+        </p>
+      </div>
+
+      <div class="about-overview">
+
+        <!-- Purpose -->
+        <article class="about-card about-reveal">
+          <div class="about-card-number">01</div>
+
+          <div class="about-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 21s-8-4.8-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.2-8 11-8 11Z"
+                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+              <path d="M5.5 12h4l2-3.5 2.2 6 1.5-2.5h3.3" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <h3>Data-Driven Assessment</h3>
+
+          <p>
+            Explore how cardiovascular indicators are used as inputs
+            for a machine learning prediction model.
+          </p>
+        </article>
+
+        <!-- Technology -->
+        <article class="about-card about-reveal" data-delay="1">
+          <div class="about-card-number">02</div>
+
+          <div class="about-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
+              <path d="M7 12h2.5l2-4 3 8 2-4H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <h3>Machine Learning</h3>
+
+          <p>
+            A K-Nearest Neighbors (KNN) classifier processes the
+            prepared input data to generate a prediction.
+          </p>
+        </article>
+
+        <!-- User experience -->
+        <article class="about-card about-reveal" data-delay="2">
+          <div class="about-card-number">03</div>
+
+          <div class="about-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6" />
+              <path d="M8 21h8M12 18v3M7 10h3l1.5-2.5L14 13l1.5-3H17" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <h3>Interactive Experience</h3>
+
+          <p>
+            Enter health indicators, explore the prediction output,
+            and understand the basic workflow of the application.
+          </p>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Project Workflow -->
+    <div class="about-workflow-wrap">
+      <div class="about-workflow about-reveal">
+
+        <div class="about-workflow-copy">
+          <span class="about-eyebrow">HOW IT WORKS</span>
+
+          <h3>From Health Indicators to Insights</h3>
+
+          <p>
+            A simple workflow connects user inputs with data
+            preprocessing and machine learning inference.
+          </p>
+        </div>
+
+        <div class="about-workflow-steps">
+
+          <div class="about-step">
+            <span class="about-step-index">01</span>
+            <span class="about-step-title">Health Indicators</span>
+            <span class="about-step-description">User input data</span>
+          </div>
+
+          <span class="about-step-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <div class="about-step">
+            <span class="about-step-index">02</span>
+            <span class="about-step-title">Preprocessing</span>
+            <span class="about-step-description">Feature scaling</span>
+          </div>
+
+          <span class="about-step-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <div class="about-step about-step-final">
+            <span class="about-step-index">03</span>
+            <span class="about-step-title">KNN Prediction</span>
+            <span class="about-step-description">Model output</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <p class="about-disclaimer about-reveal">
+        CardioLens AI is an educational project and is not a substitute
+        for professional medical advice, diagnosis, or treatment.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- End About -->
+
+
+  <!-- =========================
+     CARDIOLENS AI — TECHNOLOGY
+========================= -->
+
+  <section class="technology-section" id="technology">
+
+    <div class="technology-container">
+
+      <!-- Section Heading -->
+      <div class="technology-heading tech-reveal">
+        <span class="technology-eyebrow">TECHNOLOGY STACK</span>
+
+        <h2 class="technology-title">
+          The Technology Behind
+          <span>CardioLens AI</span>
+        </h2>
+
+        <p class="technology-description">
+          A practical combination of machine learning and web technologies
+          that connects cardiovascular input data with an interactive
+          prediction experience.
+        </p>
+      </div>
+
+      <!-- Technology Cards -->
+      <div class="technology-grid">
+
+        <!-- Python -->
+        <article class="technology-card tech-reveal">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 3.2H8.1A3.1 3.1 0 0 0 5 6.3v3.1h6.2v1.2H5A3.1 3.1 0 0 0 1.9 13.7v1.1A3.1 3.1 0 0 0 5 17.9h2.1v-2.5A3.1 3.1 0 0 1 10.2 12h3.6a3.1 3.1 0 0 0 3.1-3.1V6.3a3.1 3.1 0 0 0-3.1-3.1H12Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path
+                  d="M12 20.8h3.9a3.1 3.1 0 0 0 3.1-3.1v-3.1h-6.2v-1.2H19a3.1 3.1 0 0 0 3.1-3.1V9.2A3.1 3.1 0 0 0 19 6.1h-2.1v2.5a3.1 3.1 0 0 1-3.1 3.4h-3.6a3.1 3.1 0 0 0-3.1 3.1v2.6a3.1 3.1 0 0 0 3.1 3.1H12Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <circle cx="9" cy="6.8" r=".8" fill="currentColor" />
+                <circle cx="15" cy="17.2" r=".8" fill="currentColor" />
+              </svg>
+            </div>
+
+            <span class="technology-number">01</span>
+          </div>
+
+          <h3>Python</h3>
+
+          <p>
+            Handles prediction logic, input processing, and the
+            integration of the machine learning model.
+          </p>
+
+          <div class="technology-tags">
+            <span>Data Processing</span>
+            <span>Backend Logic</span>
+          </div>
+        </article>
+
+        <!-- Scikit-learn -->
+        <article class="technology-card tech-reveal" data-delay="1">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="5" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="5" cy="18" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="19" cy="18" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="12" cy="12" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <path d="m10.9 6.8-1.7 3.4M13.1 6.8l1.7 3.4M10 13.7l-3.3 2.7m7.3-2.7 3.3 2.7" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+
+            <span class="technology-number">02</span>
+          </div>
+
+          <h3>Scikit-learn</h3>
+
+          <p>
+            Provides the StandardScaler preprocessing component and
+            K-Nearest Neighbors classifier for predictions.
+          </p>
+
+          <div class="technology-tags">
+            <span>StandardScaler</span>
+            <span>KNN</span>
+          </div>
+        </article>
+
+        <!-- Flask -->
+        <article class="technology-card tech-reveal" data-delay="2">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3.5" y="4" width="17" height="16" rx="3" stroke="currentColor" stroke-width="1.5" />
+                <path d="M7 9h10M7 12h6M7 15h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+
+            <span class="technology-number">03</span>
+          </div>
+
+          <h3>Flask</h3>
+
+          <p>
+            Connects the web interface to the Python backend and
+            handles prediction requests.
+          </p>
+
+          <div class="technology-tags">
+            <span>Web Framework</span>
+            <span>API Routes</span>
+          </div>
+        </article>
+
+        <!-- Tailwind CSS -->
+        <article class="technology-card tech-reveal" data-delay="3">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 9.2C5 6.5 7 5.2 10 5.2c4.5 0 5 3.3 7.2 3.3 1.3 0 2.2-.5 2.8-1.5C19 9.7 17 11 14 11c-4.5 0-5-3.3-7.2-3.3-1.3 0-2.2.5-2.8 1.5Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M4 16.8c1-2.7 3-4 6-4 4.5 0 5 3.3 7.2 3.3 1.3 0 2.2-.5 2.8-1.5-1 2.7-3 4-6 4-4.5 0-5-3.3-7.2-3.3-1.3 0-2.2.5-2.8 1.5Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <span class="technology-number">04</span>
+          </div>
+
+          <h3>Tailwind CSS</h3>
+
+          <p>
+            Supports responsive layouts and consistent interface
+            styling across desktop and mobile devices.
+          </p>
+
+          <div class="technology-tags">
+            <span>Responsive UI</span>
+            <span>Styling</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Workflow -->
+      <div class="technology-workflow tech-reveal">
+
+        <div class="technology-workflow-heading">
+          <div>
+            <span class="technology-eyebrow">MODEL WORKFLOW</span>
+            <h3>From Input to Prediction</h3>
+          </div>
+
+          <p>
+            A simplified view of how the application processes
+            user-provided health indicators.
+          </p>
+        </div>
+
+        <div class="technology-pipeline">
+
+          <div class="pipeline-step">
+            <span class="pipeline-index">01</span>
+            <span class="pipeline-title">User Input</span>
+            <span class="pipeline-detail">13 health features</span>
+          </div>
+
+          <span class="pipeline-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <div class="pipeline-step">
+            <span class="pipeline-index">02</span>
+            <span class="pipeline-title">Preprocessing</span>
+            <span class="pipeline-detail">Feature scaling</span>
+          </div>
+
+          <span class="pipeline-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <div class="pipeline-step pipeline-step-highlight">
+            <span class="pipeline-index">03</span>
+            <span class="pipeline-title">KNN Classifier</span>
+            <span class="pipeline-detail">Model inference</span>
+          </div>
+
+          <span class="pipeline-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <div class="pipeline-step">
+            <span class="pipeline-index">04</span>
+            <span class="pipeline-title">Prediction</span>
+            <span class="pipeline-detail">Output display</span>
+          </div>
+
+        </div>
+
+        <div class="technology-bottom-note">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+            <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+
+          <p>
+            Predictions are generated by a machine learning model and
+            should not be interpreted as a clinical diagnosis.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- End Technology -->
+
+
+  <!-- =========================
+     CARDIOLENS AI — FEATURES
+========================= -->
+
+  <section class="features-section" id="features">
+
+    <div class="features-container">
+
+      <!-- Section Heading -->
+      <div class="features-heading feature-reveal">
+        <span class="features-eyebrow">KEY CAPABILITIES</span>
+
+        <h2 class="features-title">
+          Designed to Make Heart Health
+          <span>Data More Understandable</span>
+        </h2>
+
+        <p class="features-description">
+          Explore the key capabilities that power the CardioLens AI
+          prediction experience, from health data input to model output.
+        </p>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="features-grid">
+
+        <!-- Feature 1 -->
+        <article class="feature-card feature-reveal">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-8-4.8-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.2-8 11-8 11Z"
+                  stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M5.5 12h4l2-3.5 2.2 6 1.5-2.5h3.3" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">01</span>
+          </div>
+
+          <h3>Heart Disease Prediction</h3>
+
+          <p>
+            Submit cardiovascular health indicators to obtain a
+            model-generated prediction based on the provided inputs.
+          </p>
+
+          <span class="feature-label">Machine Learning</span>
+        </article>
+
+        <!-- Feature 2 -->
+        <article class="feature-card feature-reveal" data-delay="1">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 19V5m0 14h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="m7 15 4-4 3 2 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <circle cx="19" cy="7" r="1.5" stroke="currentColor" stroke-width="1.4" />
+              </svg>
+            </span>
+            <span class="feature-index">02</span>
+          </div>
+
+          <h3>Prediction Results</h3>
+
+          <p>
+            View the output returned by the trained model through
+            a clear and accessible results interface.
+          </p>
+
+          <span class="feature-label">Result Interpretation</span>
+        </article>
+
+        <!-- Feature 3 -->
+        <article class="feature-card feature-reveal" data-delay="2">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
+                <path d="M7 12h2.5l2-4 3 8 2-4H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">03</span>
+          </div>
+
+          <h3>13 Health Indicators</h3>
+
+          <p>
+            Work with structured cardiovascular input features
+            covering demographic information and clinical measurements.
+          </p>
+
+          <span class="feature-label">Structured Inputs</span>
+        </article>
+
+        <!-- Feature 4 -->
+        <article class="feature-card feature-reveal" data-delay="1">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="6" cy="7" r="2" stroke="currentColor" stroke-width="1.6" />
+                <circle cx="18" cy="7" r="2" stroke="currentColor" stroke-width="1.6" />
+                <circle cx="12" cy="17" r="2" stroke="currentColor" stroke-width="1.6" />
+                <path d="m7.7 8.3 2.9 6.1m5.7-6.1-2.9 6.1M8 7h8" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="feature-index">04</span>
+          </div>
+
+          <h3>Machine Learning Pipeline</h3>
+
+          <p>
+            Integrate input processing, feature scaling, and
+            KNN classification into a connected prediction workflow.
+          </p>
+
+          <span class="feature-label">Scikit-learn</span>
+        </article>
+
+        <!-- Feature 5 -->
+        <article class="feature-card feature-reveal" data-delay="2">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6" />
+                <path d="M8 21h8m-4-4v4M7 12l3-3 2 2 4-4" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">05</span>
+          </div>
+
+          <h3>Interactive Web Interface</h3>
+
+          <p>
+            Enter health information through an organized form
+            designed for a straightforward user experience.
+          </p>
+
+          <span class="feature-label">Flask Web App</span>
+        </article>
+
+        <!-- Feature 6 -->
+        <article class="feature-card feature-reveal" data-delay="3">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3 20 6v5c0 5-3.4 8-8 10-4.6-2-8-5-8-10V6l8-3Z" stroke="currentColor" stroke-width="1.6"
+                  stroke-linejoin="round" />
+                <path d="m8.5 12 2.3 2.3 4.8-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">06</span>
+          </div>
+
+          <h3>Model-Based Assessment</h3>
+
+          <p>
+            Explore a prediction generated from the model while
+            keeping the limitations of automated assessment in mind.
+          </p>
+
+          <span class="feature-label">Educational Project</span>
+        </article>
+
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="features-disclaimer feature-reveal">
+        <span class="features-disclaimer-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+            <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </span>
+
+        <p>
+          CardioLens AI is intended for educational and demonstration
+          purposes only. Its predictions are not a substitute for
+          professional medical evaluation.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="features-cta feature-reveal">
+        <div class="features-cta-copy">
+          <span class="features-eyebrow">READY TO EXPLORE?</span>
+          <h3>See the prediction workflow in action.</h3>
+          <p>
+            Explore the demo and learn how health indicators are
+            processed by the model.
+          </p>
+        </div>
+
+        <a href="#try-it" class="features-cta-button">
+          Try Demo
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- End Features -->
+
+
+  <!-- =========================
+     CARDIOLENS AI — ASSESSMENT FORM
+========================= -->
+
+  <section class="assessment-section" id="try-it">
+
+    <div class="assessment-container">
+
+      <!-- Heading -->
+      <div class="assessment-heading form-reveal">
+        <span class="assessment-eyebrow">INTERACTIVE ASSESSMENT</span>
+
+        <h2 class="assessment-title">
+          Explore the Heart Health
+          <span>Assessment</span>
+        </h2>
+
+        <p class="assessment-description">
+          Enter the health indicators below to explore how the
+          machine learning model processes your input and generates
+          a prediction.
+        </p>
+      </div>
+
+      <!-- Form Card -->
+      <div class="assessment-card form-reveal">
+
+        <div class="assessment-card-header">
+          <div class="assessment-card-heading">
+            <span class="assessment-header-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-8-4.8-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.2-8 11-8 11Z"
+                  stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M5.5 12h4l2-3.5 2.2 6 1.5-2.5h3.3" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+
+            <div>
+              <h3>Health Indicator Form</h3>
+              <p>Complete all 13 required fields.</p>
+            </div>
+          </div>
+
+          <span class="assessment-field-count">13 FEATURES</span>
+        </div>
+
+        <div class="assessment-form-content">
+
+          <!-- Sample actions -->
+          <div class="assessment-toolbar">
+            <p>Want to explore the form first?</p>
+
+            <div class="assessment-toolbar-actions">
+              <button class="assessment-tool-button" type="button" id="fill-yes">
+                Sample A
+              </button>
+
+              <button class="assessment-tool-button" type="button" id="fill-no">
+                Sample B
+              </button>
+
+              <button class="assessment-tool-button assessment-clear-button" type="button" id="clear-form">
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="assessment-sample-notice" id="sample-notice" role="status" aria-live="polite" hidden></div>
+
+          <form id="assessment-form" class="assessment-form" action="{{ url_for('predict') }}" method="POST">
+
+            <!-- Group 1 -->
+            <fieldset class="assessment-group">
+              <legend>
+                <span class="assessment-group-number">01</span>
+                Personal Information
+              </legend>
+
+              <div class="assessment-fields assessment-fields-three">
+
+                <div class="assessment-field">
+                  <label for="age">Age (years)</label>
+                  <input id="age" name="age" type="number" min="1" max="120" step="1" placeholder="e.g. 52" required />
+                </div>
+
+                <div class="assessment-field">
+                  <label for="sex">Sex</label>
+                  <select id="sex" name="sex" required>
+                    <option value="" disabled selected>Select sex</option>
+                    <option value="1">Male (1)</option>
+                    <option value="0">Female (0)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="cp">Chest Pain Type</label>
+                  <select id="cp" name="cp" required>
+                    <option value="" disabled selected>Select type</option>
+                    <option value="0">Typical Angina (0)</option>
+                    <option value="1">Atypical Angina (1)</option>
+                    <option value="2">Non-anginal Pain (2)</option>
+                    <option value="3">Asymptomatic (3)</option>
+                  </select>
+                </div>
+
+              </div>
+            </fieldset>
+
+            <!-- Group 2 -->
+            <fieldset class="assessment-group">
+              <legend>
+                <span class="assessment-group-number">02</span>
+                Vital Signs &amp; Blood Tests
+              </legend>
+
+              <div class="assessment-fields assessment-fields-three">
+
+                <div class="assessment-field">
+                  <label for="trestbps">
+                    Resting Blood Pressure (mmHg)
+                  </label>
+                  <input id="trestbps" name="trestbps" type="number" min="50" max="300" step="1" placeholder="e.g. 125"
+                    required />
+                </div>
+
+                <div class="assessment-field">
+                  <label for="chol">
+                    Serum Cholesterol (mg/dl)
+                  </label>
+                  <input id="chol" name="chol" type="number" min="50" max="700" step="1" placeholder="e.g. 212"
+                    required />
+                </div>
+
+                <div class="assessment-field">
+                  <label for="fbs">
+                    Fasting Blood Sugar &gt; 120 mg/dl
+                  </label>
+                  <select id="fbs" name="fbs" required>
+                    <option value="" disabled selected>Select value</option>
+                    <option value="0">False (0)</option>
+                    <option value="1">True (1)</option>
+                  </select>
+                </div>
+
+              </div>
+            </fieldset>
+
+            <!-- Group 3 -->
+            <fieldset class="assessment-group">
+              <legend>
+                <span class="assessment-group-number">03</span>
+                Cardiac Test Results
+              </legend>
+
+              <div class="assessment-fields assessment-fields-three">
+
+                <div class="assessment-field">
+                  <label for="restecg">Resting ECG</label>
+                  <select id="restecg" name="restecg" required>
+                    <option value="" disabled selected>Select result</option>
+                    <option value="0">Normal (0)</option>
+                    <option value="1">ST-T Abnormality (1)</option>
+                    <option value="2">LV Hypertrophy (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="thalach">
+                    Maximum Heart Rate Achieved
+                  </label>
+                  <input id="thalach" name="thalach" type="number" min="40" max="250" step="1" placeholder="e.g. 168"
+                    required />
+                </div>
+
+                <div class="assessment-field">
+                  <label for="exang">
+                    Exercise-Induced Angina
+                  </label>
+                  <select id="exang" name="exang" required>
+                    <option value="" disabled selected>Select value</option>
+                    <option value="0">No (0)</option>
+                    <option value="1">Yes (1)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="oldpeak">
+                    ST Depression (oldpeak)
+                  </label>
+                  <input id="oldpeak" name="oldpeak" type="number" min="0" max="10" step="0.1" placeholder="e.g. 1.0"
+                    required />
+                </div>
+
+                <div class="assessment-field">
+                  <label for="slope">ST Segment Slope</label>
+                  <select id="slope" name="slope" required>
+                    <option value="" disabled selected>Select slope</option>
+                    <option value="0">Upsloping (0)</option>
+                    <option value="1">Flat (1)</option>
+                    <option value="2">Downsloping (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="ca">
+                    Major Vessels (ca)
+                  </label>
+                  <select id="ca" name="ca" required>
+                    <option value="" disabled selected>Select value</option>
+                    <option value="0">0 vessels</option>
+                    <option value="1">1 vessel</option>
+                    <option value="2">2 vessels</option>
+                    <option value="3">3 vessels</option>
+                    <option value="4">4 (verify model encoding)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="thal">Thalassemia (thal)</label>
+                  <select id="thal" name="thal" required>
+                    <option value="" disabled selected>Select value</option>
+                    <option value="0">Value 0</option>
+                    <option value="1">Normal (1)</option>
+                    <option value="2">Fixed Defect (2)</option>
+                    <option value="3">Reversible Defect (3)</option>
+                  </select>
+                  <small>
+                    Options must match the encoding used during model training.
+                  </small>
+                </div>
+
+              </div>
+            </fieldset>
+
+            <!-- Disclaimer -->
+            <div class="assessment-form-disclaimer">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+                <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+
+              <p>
+                This assessment is for educational purposes only.
+                It does not provide a medical diagnosis.
+              </p>
+            </div>
+
+            <!-- Submit -->
+            <div class="assessment-form-footer">
+              <p>Review your inputs before submitting.</p>
+
+              <button class="assessment-submit-button" type="submit" id="assessment-submit">
+                <span>Analyze Health Indicators</span>
+
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Prediction Result / Error Message -->
+      {% if prediction is defined or error is defined %}
+      <section class="prediction-result-section" id="prediction-result" aria-live="polite">
+        {% if error is defined %}
+        <div class="prediction-result-card prediction-error">
+          <div class="prediction-result-icon" aria-hidden="true">!</div>
+
+          <div class="prediction-result-content">
+            <span class="prediction-result-eyebrow">ASSESSMENT NOTICE</span>
+            <h3>Unable to Process Input</h3>
+            <p>{{ error }}</p>
+            <p class="prediction-result-note">
+              Please review the information you entered and try again.
+            </p>
+          </div>
+        </div>
+
+        {% elif prediction is defined %}
+        <div class="prediction-result-card">
+          <div class="prediction-result-icon" aria-hidden="true">
+            {% if prediction == "Yes" %}!
+            {% else %}✓{% endif %}
+          </div>
+
+          <div class="prediction-result-content">
+            <span class="prediction-result-eyebrow">MODEL OUTPUT</span>
+
+            <h3>
+              {% if prediction == "Yes" %}
+              Model Prediction: Positive
+              {% else %}
+              Model Prediction: Negative
+              {% endif %}
+            </h3>
+
+            <p class="prediction-result-description">
+              {% if prediction == "Yes" %}
+              The model classified the submitted indicators into its positive
+              prediction class.
+              {% else %}
+              The model classified the submitted indicators into its negative
+              prediction class.
+              {% endif %}
+            </p>
+
+            <div class="prediction-probability">
+              <div class="prediction-probability-header">
+                <span>Estimated probability for positive class</span>
+                <strong>{{ "%.1f"|format(probability * 100) }}%</strong>
+              </div>
+
+              <div class="prediction-probability-track" role="progressbar"
+                aria-label="Estimated probability for positive class" aria-valuemin="0" aria-valuemax="100"
+                aria-valuenow="{{ (probability * 100)|round(1) }}">
+                <div class="prediction-probability-fill" style="width: {{ (probability * 100)|round(1) }}%;"></div>
+              </div>
+            </div>
+
+            <p class="prediction-result-note">
+              This output reflects the machine learning model, not a confirmed
+              diagnosis or an individual's definitive risk. It should not replace
+              assessment by a qualified healthcare professional.
+            </p>
+
+            <a class="prediction-retry-button" href="#try-it">
+              Try Another Assessment
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      </section>
+      {% endif %}
+
+
+    </div>
+  </section>
+
+  <!-- End Assessment Form -->
+
+
+  <!-- =========================
+     CARDIOLENS AI FOOTER
+========================= -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-container">
+
+      <!-- Footer Brand -->
+      <div class="footer-main">
+        <a class="footer-brand" href="#home" aria-label="CardioLens AI Home">
+          <span class="footer-brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path
+                d="M20 33S5 24.5 5 14.5C5 9.8 8.4 6.5 12.5 6.5C15.8 6.5 18.1 8.5 20 11C21.9 8.5 24.2 6.5 27.5 6.5C31.6 6.5 35 9.8 35 14.5C35 24.5 20 33 20 33Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <path d="M8 20H14L17.5 14L22 25L25.5 19H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <span class="footer-brand-wordmark">
+            CardioLens <span>AI</span>
+          </span>
+        </a>
+
+        <p class="footer-description">
+          AI-assisted heart health insights, designed to make
+          machine learning easier to explore and understand.
+        </p>
+
+        <div class="footer-status">
+          <span class="footer-status-dot"></span>
+          <span>Machine Learning Project</span>
+        </div>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="footer-navigation">
+        <h3 class="footer-heading">Explore</h3>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#technology">Technology</a>
+          <a href="#features">Features</a>
+          <a href="#try-it">Try Demo</a>
+        </nav>
+      </div>
+
+      <!-- Footer Disclaimer -->
+      <div class="footer-disclaimer">
+        <span class="footer-disclaimer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3L21 7V12C21 17 17.2 20 12 22C6.8 20 3 17 3 12V7L12 3Z" stroke="currentColor"
+              stroke-width="1.6" stroke-linejoin="round" />
+            <path d="M12 8V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            <circle cx="12" cy="16.5" r="0.8" fill="currentColor" />
+          </svg>
+        </span>
+
+        <div>
+          <h3 class="footer-heading">Important Notice</h3>
+          <p>
+            This tool is intended for educational and informational
+            purposes only. It does not provide a medical diagnosis
+            and must not replace professional medical advice.
+            For urgent symptoms, seek emergency medical care.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p class="footer-copyright">
+          &copy; <span id="current-year"></span>
+          <span class="footer-copyright-brand">CardioLens AI</span>.
+          All rights reserved.
+        </p>
+
+        <a class="footer-back-to-top" href="#home">
+          Back to top
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 15V5M5.5 9.5L10 5L14.5 9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <!-- End CardioLens AI Footer -->
+
+  <!-- Main JavaScript -->
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+
+</html>
